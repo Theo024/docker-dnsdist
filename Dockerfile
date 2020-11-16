@@ -21,10 +21,15 @@ FROM alpine:latest
 
 COPY --from=builder /build /
 
-RUN apk add --no-cache lua libedit openssl h2o && \
+RUN apk add --no-cache \
+        lua \
+        libedit \
+        openssl \
+        h2o \
+    && \
     addgroup -g 500 -S dnsdist && \
     adduser -u 500 -D -H -S -g dnsdist -s /sbin/nologin -G dnsdist dnsdist
 
 USER dnsdist
 
-ENTRYPOINT ["/usr/local/bin/dnsdist"]
+CMD ["/usr/local/bin/dnsdist"]
