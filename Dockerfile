@@ -32,4 +32,4 @@ RUN apk add --no-cache \
 
 USER dnsdist
 
-CMD ["/usr/local/bin/dnsdist"]
+CMD ["/usr/local/bin/dnsdist", "--supervised", "--disable-syslog"]
